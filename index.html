@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pt">
 <head>
@@ -139,9 +140,18 @@
     height: auto;
 }
 .logo img {
-    width: 150px;
-    height: auto;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid coral;
 }
+#vip3{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    border: 5px solid coral;
+}
+
 
     </style>
 </head>
@@ -150,7 +160,7 @@
         <div class="container">
             <div class="row align-items-center">
                 <div class="col-md-2 text-center">
-                    <img src="./img/vip2.webp" alt="Logo da Micten" class="img-fluid" style="width: 50px; height: 50px; border-radius: 50%;border: 5px solid #ff9100;>
+                    <img id="vip3" src="./img/vip2.webp" alt="Logo da Micten" class="img-fluid">
                 </div>
                 <div class="col-md-10">
                     <h1 class="display-4">Bem-vindo ao Desafio de Conteúdos Escolares</h1>
@@ -165,11 +175,14 @@
 </div>
     
     <div class="logo">
-        <img src="./img/emola.png" alt="Imagem Esquerda" style="width: 50px; height: 50px; border-radius: 50%;border: 5px solid #ff9100;>
+        <img src="./img/emola.png" alt="Imagem Esquerda">
       <h3>Deposite na emola: 865400070</h3>
         
     </div>
-    
+    <div class="logo">
+         <img src="./img/voda.jpg" alt="Imagem Direita">
+        <h3>Deposite na Mpsa: 852638361</h3>
+    </div>
 </header>
     <div class="container">
         <div class="row">
@@ -188,7 +201,38 @@
                     </div>
                 </div>
             </div>
-            
+            <div class="col-sm-4 mb-4">
+                <div id="carousel2" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm-4 mb-4">
+                <div id="carousel3" class="carousel slide" data-ride="carousel" data-interval="5000">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="./img/alu2.jpg" class="d-block w-100" alt="...">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     <div class="container">
         <div class="row">
             <div class="col-md-4">
@@ -314,62 +358,63 @@
     <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
     <script>
            const firebaseConfig = {
-  apiKey: "YOUR_API_KEY",
-  authDomain: "YOUR_AUTH_DOMAIN",
-  databaseURL: "YOUR_DATABASE_URL",
-  projectId: "YOUR_PROJECT_ID",
-  storageBucket: "YOUR_STORAGE_BUCKET",
-  messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-  appId: "YOUR_APP_ID",
-  measurementId: "YOUR_MEASUREMENT_ID"
+  apiKey: "AIzaSyD8XOHaLCzNLDrIlHG3em4g4gyYIKTLWpQ",
+  authDomain: "xitique-61310.firebaseapp.com",
+  databaseURL: "https://xitique-61310-default-rtdb.firebaseio.com",
+  projectId: "xitique-61310",
+  storageBucket: "xitique-61310.appspot.com",
+  messagingSenderId: "331274991404",
+  appId: "1:331274991404:web:2fec0eb082d3fe0b33de89",
+  measurementId: "G-DFDMBKW1RK"
 };
 
-firebase.initializeApp(firebaseConfig);
-var database = firebase.database();
 
-$('#inscriptionForm').submit(function(e) {
-    e.preventDefault();
-    var fullName = $('#fullName').val();
-    var phoneNumber = $('#phoneNumber').val();
-    var selectedClass = $('#class').val();
-    var school = $('#school').val();
+        firebase.initializeApp(firebaseConfig);
+        var database = firebase.database();
 
-    database.ref('inscritos').push({
-        fullName: fullName,
-        phoneNumber: phoneNumber,
-        selectedClass: selectedClass,
-        school: school
-    });
+        $('#inscriptionForm').submit(function(e) {
+            e.preventDefault();
+            var fullName = $('#fullName').val();
+            var phoneNumber = $('#phoneNumber').val();
+            var selectedClass = $('#class').val();
+            var school = $('#school').val();
 
-    $('#fullName').val('');
-    $('#phoneNumber').val('');
-    $('#class').val('10');
-    $('#school').val('');
+            database.ref('inscritos').push({
+                fullName: fullName,
+                phoneNumber: phoneNumber,
+                selectedClass: selectedClass,
+                school: school
+            });
 
-    swal.fire("Inscrição Efetuada!", "Para concluir faz o deposito de inscrição . Prepare-se!", "success");
-});
+            $('#fullName').val('');
+            $('#phoneNumber').val('');
+            $('#class').val('10');
+            $('#school').val('');
 
-var countDownDate = new Date("May 1, 2024 00:00:00").getTime();
+            swal.fire("Inscrição Efetuada!", "Para concluir faz o deposito de inscrição . Prepare-se!", "success");
+        });
 
-var x = setInterval(function() {
-    var now = new Date().getTime();
-    var distance = countDownDate - now;
+        var countDownDate = new Date("May 1, 2024 00:00:00").getTime();
 
-    var days = Math.floor(distance / (1000 * 60 * 60 * 24));
-    var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-    var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        var x = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = countDownDate - now;
 
-    document.querySelector(".countdown-timer .days").innerHTML = days + "d";
-    document.querySelector(".countdown-timer .hours").innerHTML = hours + "h";
-    document.querySelector(".countdown-timer .minutes").innerHTML = minutes + "m";
-    document.querySelector(".countdown-timer .seconds").innerHTML = seconds + "s";
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    if (distance < 0) {
-        clearInterval(x);
-        document.getElementById("countdown").innerHTML = "<h3 class='text-center mb-3'>As inscrições estão encerradas!</h3>";
-    }
-}, 1000);
-</script>
+            document.querySelector(".countdown-timer .days").innerHTML = days + "d";
+            document.querySelector(".countdown-timer .hours").innerHTML = hours + "h";
+            document.querySelector(".countdown-timer .minutes").innerHTML = minutes + "m";
+            document.querySelector(".countdown-timer .seconds").innerHTML = seconds + "s";
+
+            if (distance < 0) {
+                clearInterval(x);
+                document.getElementById("countdown").innerHTML = "<h3 class='text-center mb-3'>As inscrições estão encerradas!</h3>";
+            }
+        }, 1000);
+    </script>
 </body>
 </html>
